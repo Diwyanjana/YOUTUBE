@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0f172a; /* Dark background */
+    overflow: hidden;
+}
+
+/* රවුම් වල පොදු සැකස්ම */
+.circle, .circle2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+.circle {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(#ff0057, #e64a19);
+    animation: move-circle1 20s ease-in-out infinite alternate;
+}
+
+.circle2 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(#2196f3, #00bcd4);
+    animation: move-circle2 25s ease-in-out infinite alternate;
+}
+
+/* Card එකේ සැකස්ම */
+.card {
+    position: relative;
+    width: 350px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+    z-index: 10; /* card එක ඉදිරියෙන් තබා ගැනීමට */
+    animation: float 5s ease-in-out infinite;
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.05); 
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+    text-align: center;
+    color: #fff;
+}
+
+.content h2 { margin-bottom: 5px; }
+
+.content a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 25px;
+    background: #fff;
+    color: #000;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.content a:hover {
+    background: #ff0057;
+    color: #fff;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes move-circle1 {
+    0% { transform: translate(-180px, -120px) scale(1); }
+    50% { transform: translate(50px, 20px) scale(1.1); }
+    100% { transform: translate(120px, -50px) scale(1); }
+}
+
+@keyframes move-circle2 {
+    0% { transform: translate(180px, 150px) scale(1.1); }
+    50% { transform: translate(-20px, 0px) scale(1); }
+    100% { transform: translate(-150px, 100px) scale(1.1); }
+}
