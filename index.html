@@ -5,76 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Neumorphic 404</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root {
-            --bg: #e0e5ec;
-            --shadow-light: #ffffff;
-            --shadow-dark: #a3b1c6;
-            --liquid: #3b82f6;
-        }
-
-        [data-theme='dark'] {
-            --bg: #1a1d21;
-            --shadow-light: #2a2f36;
-            --shadow-dark: #000000;
-            --liquid: #60a5fa;
-        }
-
-        body {
-            background-color: var(--bg);
-            transition: all 0.5s ease;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .neu-card {
-            background: var(--bg);
-            border-radius: 40px;
-            box-shadow: 20px 20px 60px var(--shadow-dark),
-                       -20px -20px 60px var(--shadow-light);
-            perspective: 1000px;
-            transform-style: preserve-3d;
-        }
-
-        
-        .liquid-text {
-            font-size: 10rem;
-            font-weight: 900;
-            line-height: 1;
-            position: relative;
-            background: linear-gradient(to bottom, var(--shadow-dark) 50%, var(--liquid) 50%);
-            background-size: 100% 200%;
-            background-position: 0 0%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transition: background-position 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.05));
-        }
-
-        .neu-button {
-            background: var(--bg);
-            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .neu-button:hover {
-            box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
-            transform: translateY(2px);
-        }
-
-        .neu-button:active {
-            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
-        }
-
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotateX(0deg); }
-            50% { transform: translateY(-10px) rotateX(2deg); }
-        }
-        .floating { animation: float 4s ease-in-out infinite; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-6">
 
@@ -101,18 +32,15 @@
         const liquid = document.getElementById('liquid');
         const themeToggle = document.getElementById('themeToggle');
 
-        
         document.addEventListener('mousemove', (e) => {
             const x = (window.innerWidth / 2 - e.clientX) / 40;
             const y = (window.innerHeight / 2 - e.clientY) / 40;
             card.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
 
-            
             const percent = (e.clientY / window.innerHeight) * 100;
             liquid.style.backgroundPosition = `0 ${percent}%`;
         });
 
-        
         themeToggle.addEventListener('click', () => {
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
